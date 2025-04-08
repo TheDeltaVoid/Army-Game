@@ -1,6 +1,6 @@
 import pyray
 
-from modules.constants import *
+from modules.constants.general import *
 from modules.scene_manager import SceneManager
 
 def main():
@@ -17,7 +17,6 @@ def main():
         scene_manager.update(delta_time)
 
         pyray.begin_drawing()
-        pyray.clear_background(BG_COLOR)
 
         scene_manager.render()
 

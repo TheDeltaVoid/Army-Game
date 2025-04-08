@@ -1,6 +1,7 @@
 import pyray
 
-from modules.constants import *
+from modules.constants.general import *
+from modules.constants.menu import *
 from modules.text import *
 
 class MainMenu:
@@ -11,6 +12,8 @@ class MainMenu:
         pass
 
     def render(self):
+        pyray.clear_background(BG_COLOR)
+
         font_format_1452 = pyray.load_font_ex(FONT_FORMAT_1452, TITLE_FONT_SIZE, None, 0)
         
         text_size = pyray.measure_text_ex(font_format_1452, get_text("TITLE"), TITLE_FONT_SIZE, TITLE_SPACING)
