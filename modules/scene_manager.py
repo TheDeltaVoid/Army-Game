@@ -1,6 +1,4 @@
-from pyray import *
-
-from modules.menu.main import MainMenu
+from modules.menus import MainMenu
 
 class SceneManager:
     def __init__(self):

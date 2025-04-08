@@ -1,29 +1,29 @@
-from pyray import *
+import pyray
 
 from modules.constants import *
 from modules.scene_manager import SceneManager
 
 def main():
-    init_window(WIDTH, HEIGHT, TITLE)
-    toggle_fullscreen()
+    pyray.init_window(WIDTH, HEIGHT, TITLE)
+    pyray.toggle_fullscreen()
 
     scene_manager = SceneManager()
 
     delta_time = 0
 
-    while not window_should_close():
-        delta_time = get_frame_time()
+    while not pyray.window_should_close():
+        delta_time = pyray.get_frame_time()
 
         scene_manager.update(delta_time)
 
-        begin_drawing()
-        clear_background(BG_COLOR)
+        pyray.begin_drawing()
+        pyray.clear_background(BG_COLOR)
 
         scene_manager.render()
 
-        end_drawing()
+        pyray.end_drawing()
 
-    close_window()
+    pyray.close_window()
 
 if __name__ == "__main__":
     main()
