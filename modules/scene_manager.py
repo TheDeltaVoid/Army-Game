@@ -2,17 +2,16 @@ from modules.menus import MainMenu
 
 class SceneManager:
     def __init__(self):
-        self.current = "menu"
-        self.current_menu = "main"
+        self.current = "main_menu"
         
-        self.menus = {
-            "main" : MainMenu()
+        self.scenes = {
+            "main_menu" : MainMenu()
         }
 
     def update(self, delta_time):
-        if self.current == "menu":
-            self.menus[self.current_menu].update(delta_time)
+        if self.current == "main_menu":
+            self.scenes[self.current].update(delta_time)
 
     def render(self):
-        if self.current == "menu":
-            self.menus[self.current_menu].render()
+        if self.current == "main_menu":
+            self.scenes[self.current].render()
