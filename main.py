@@ -17,7 +17,7 @@ def main():
         scene_manager.update(delta_time)
 
         begin_drawing()
-        clear_background(BLACK)
+        clear_background(BG_COLOR)
 
         scene_manager.render()
 
