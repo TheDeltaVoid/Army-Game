@@ -2,7 +2,7 @@ import pyray
 
 WIDTH = 1080
 HEIGHT = 720
-LANG = "de"
+LANG = "en"
 
 LANG_MODULE = "modules.langs."
 
