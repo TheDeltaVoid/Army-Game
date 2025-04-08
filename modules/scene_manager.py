@@ -9,9 +9,7 @@ class SceneManager:
         }
 
     def update(self, delta_time):
-        if self.current == "main_menu":
-            self.scenes[self.current].update(delta_time)
+        self.scenes[self.current].update(delta_time)
 
     def render(self):
-        if self.current == "main_menu":
-            self.scenes[self.current].render()
+        self.scenes[self.current].render()
