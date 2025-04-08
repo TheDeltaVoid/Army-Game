@@ -4,7 +4,7 @@ WIDTH = 1080
 HEIGHT = 720
 LANG = "de"
 
-LANG_MODULE = "modules.langs"
+LANG_MODULE = "modules.langs."
 
 TITLE = "Army Game"
 
