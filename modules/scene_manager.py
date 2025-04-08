@@ -4,8 +4,8 @@ class SceneManager:
     def __init__(self):
         self.current = "main_menu"
 
-    def update(delta_time):
+    def update(self, delta_time):
         pass
 
-    def render():
+    def render(self):
         pass

@@ -4,8 +4,8 @@ class MainMenu:
     def __init__(self):
         pass
 
-    def update(delta_time):
+    def update(self, delta_time):
         pass
 
-    def render():
+    def render(self):
         pass

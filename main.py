@@ -5,6 +5,7 @@ from modules.scene_manager import SceneManager
 
 def main():
     init_window(WIDTH, HEIGHT, TITLE)
+    toggle_fullscreen()
 
     scene_manager = SceneManager()
 
