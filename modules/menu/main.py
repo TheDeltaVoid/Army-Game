@@ -8,4 +8,5 @@ class MainMenu:
         pass
 
     def render(self):
-        pass
+        draw_text("Hello, Window!", 0, 0, 20, WHITE)
+        draw_text("In Main Menu", 0, 200, 20, WHITE)
