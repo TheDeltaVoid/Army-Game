@@ -11,4 +11,8 @@ class MainMenu:
         pass
 
     def render(self):
-        pyray.draw_text(get_text("TITLE"), 0, 0, TITLE_FONT_SIZE, TITLE_COLOR)
+        title_font = pyray.load_font_ex(TITLE_FONT, TITLE_FONT_SIZE, None, 0)
+        text_size = pyray.measure_text_ex(title_font, get_text("TITLE"), TITLE_FONT_SIZE, TITLE_SPACING)
+        print(text_size.x)
+        text_pos = pyray.Vector2((pyray.get_render_width() // 2) - (text_size.x // 2), (text_size.y // 2))
+        pyray.draw_text_ex(title_font, get_text("TITLE"), text_pos, TITLE_FONT_SIZE, TITLE_SPACING, TITLE_COLOR)
