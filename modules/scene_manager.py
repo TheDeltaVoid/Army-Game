@@ -1,4 +1,4 @@
-from modules.menus import MainMenu
+from modules.scenes.menus import MainMenu
 
 class SceneManager:
     def __init__(self):
