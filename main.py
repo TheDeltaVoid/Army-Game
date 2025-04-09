@@ -12,6 +12,8 @@ def main():
 
     current_scene_manager = scene_manager.SceneManager(current_player_prefs)
 
+    current_scene_manager.change_scene("main_menu")
+
     delta_time = 0
 
     while not pyray.window_should_close():

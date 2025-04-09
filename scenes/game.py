@@ -11,6 +11,9 @@ class Game:
         self.game_map = pyray.load_texture_from_image(map_image)
         pyray.unload_image(map_image)
 
+    def start(self):
+        pass
+
     def update(self, delta_time):
         if pyray.is_mouse_button_down(pyray.MOUSE_BUTTON_LEFT) :
             delta = pyray.get_mouse_delta()

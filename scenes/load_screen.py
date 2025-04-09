@@ -3,10 +3,10 @@ import modules.scene_manager as scene_manager
 import modules.text as text
 
 from constants.general import *
-from constants.load_game import *
+from constants.load_screen import *
 
-class LoadGame:
-    def __init__(self, current_scene_manager, current_player_prefs):
+class LoadScreen:
+    def __init__(self, current_scene_manager, current_player_prefs, scene_id):
         self.current_scene_manager = current_scene_manager
         self.current_player_prefs = current_player_prefs
 
@@ -17,9 +17,18 @@ class LoadGame:
         self.background_texture = pyray.load_texture_from_image(background_image)
         pyray.unload_image(background_image)
 
+        self.scene_id = scene_id
+
+    def start(self):
+        pyray.begin_drawing()
+        self.render()
+        pyray.end_drawing()
+
+        self.current_scene_manager.load_scene(self.scene_id)
+
     def update(self, delta_time):
-        if self.current_scene_manager.game_ready :
-            self.current_scene_manager.current_scene = "game"
+        if self.current_scene_manager.scene_ready :
+            self.current_scene_manager.current_scene = self.scene_id
 
     def render(self):
         pyray.draw_texture(self.background_texture, 0, 0, pyray.WHITE)

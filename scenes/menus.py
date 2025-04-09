@@ -36,12 +36,15 @@ class MainMenu:
         self.button_texture = pyray.load_texture_from_image(button_image)
         pyray.unload_image(button_image)
 
+    def start(self):
+        pass
+
     def update(self, delta_time):
         if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_LEFT) :
             mouse_pos = pyray.get_mouse_position()
             if mouse_pos.x > self.button_start_pos.x and mouse_pos.y > self.button_start_pos.y :
                 if mouse_pos.x < self.button_stop_pos.x and mouse_pos.y < self.button_stop_pos.y :
-                    self.current_scene_manager.current_scene = "load_game"
+                    self.current_scene_manager.change_scene("load_screen", "game")
 
     def render(self):
         pyray.draw_texture(self.background_texture, 0, 0, pyray.WHITE)
