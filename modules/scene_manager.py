@@ -1,4 +1,4 @@
-from modules.scenes.menus import MainMenu
+from scenes.menus import MainMenu
 
 current_scene = "main_menu"
 
