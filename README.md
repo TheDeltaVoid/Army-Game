@@ -2,4 +2,4 @@
 
 ## Credits
 ### Fonts
-*Format 1452* by Frank Adebiaye, with the contribution of Anton Moglia. Distributed by [Velvetyne](velvetyne.fr).
+*Capture it* by Koczman Bálint.
