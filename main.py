@@ -7,7 +7,8 @@ from constants.general import *
 def main():
     current_player_prefs = player_prefs.PlayerPrefs()
     pyray.init_window(current_player_prefs.width, current_player_prefs.height, TITLE)
-    pyray.toggle_fullscreen()
+    if current_player_prefs.fullscreen :
+        pyray.toggle_fullscreen()
 
     current_scene_manager = scene_manager.SceneManager(current_player_prefs)
 
