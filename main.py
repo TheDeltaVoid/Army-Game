@@ -9,7 +9,7 @@ def main():
     pyray.init_window(current_player_prefs.width, current_player_prefs.height, TITLE)
     pyray.toggle_fullscreen()
 
-    current_scene_manager = scene_manager.SceneManager()
+    current_scene_manager = scene_manager.SceneManager(current_player_prefs)
 
     delta_time = 0
 
@@ -20,7 +20,7 @@ def main():
 
         pyray.begin_drawing()
 
-        current_scene_manager.render(current_player_prefs)
+        current_scene_manager.render()
 
         pyray.end_drawing()
 
