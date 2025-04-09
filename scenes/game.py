@@ -1,6 +1,6 @@
 import pyray
 
-from modules.constants.game import *
+from constants.game import *
 
 class Game:
     def __init__(self):

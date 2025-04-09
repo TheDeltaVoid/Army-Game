@@ -1,24 +1,24 @@
 import pyray
+import modules.scene_manager as scene_manager
 
-from modules.constants.general import *
-from modules.scene_manager import SceneManager
+from constants.general import *
 
 def main():
     pyray.init_window(WIDTH, HEIGHT, TITLE)
     pyray.toggle_fullscreen()
 
-    scene_manager = SceneManager()
+    current_scene_manager = scene_manager.SceneManager()
 
     delta_time = 0
 
     while not pyray.window_should_close():
         delta_time = pyray.get_frame_time()
 
-        scene_manager.update(delta_time)
+        current_scene_manager.update(delta_time)
 
         pyray.begin_drawing()
 
-        scene_manager.render()
+        current_scene_manager.render()
 
         pyray.end_drawing()
 

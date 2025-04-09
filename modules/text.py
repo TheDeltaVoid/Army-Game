@@ -1,6 +1,6 @@
 import importlib
 
-from modules.constants.general import *
+from constants.general import *
 
 def get_text(text_name):
     text = ""

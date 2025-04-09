@@ -2,8 +2,8 @@ import pyray
 import modules.scene_manager as scene_manager
 import modules.text as text
 
-from modules.constants.general import *
-from modules.constants.menu import *
+from constants.general import *
+from constants.menu import *
 
 class MainMenu:
     def __init__(self):
