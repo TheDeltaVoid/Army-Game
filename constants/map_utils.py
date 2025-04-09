@@ -1,7 +1,7 @@
 import pyray
 
 OFFSET = 10000
-SCALE = 2
+SCALE = 3
 
 MAX_HEIGHT = 100
 
