@@ -1,2 +1,2 @@
-TITLE = "Jeu d'armée"
+TITLE = "Jeu de troupes"
 PLAY = "DIRIGER !"
