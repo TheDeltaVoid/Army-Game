@@ -9,5 +9,5 @@ class Game:
     def update(self, delta_time):
         pass
 
-    def render(self):
+    def render(self, current_player_prefs):
         pyray.clear_background(BG_COLOR)
