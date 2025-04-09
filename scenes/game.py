@@ -38,10 +38,4 @@ class Game:
 
         pyray.draw_texture(self.game_map, -(MAP_SIZE_X // 2), -(MAP_SIZE_Y // 2), pyray.GREEN)
 
-        pyray.rl_push_matrix()
-        pyray.rl_translatef(0, 1250, 0)
-        pyray.rl_rotatef(90, 1, 0, 0)
-        pyray.draw_grid(50, 100)
-        pyray.rl_pop_matrix()
-
         pyray.end_mode_2d()
