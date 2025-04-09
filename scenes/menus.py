@@ -18,7 +18,7 @@ class MainMenu:
             mouse_pos = pyray.get_mouse_position()
             if mouse_pos.x > self.button_start_pos.x and mouse_pos.y > self.button_start_pos.y :
                 if mouse_pos.x < self.button_stop_pos.x and mouse_pos.y < self.button_stop_pos.y :
-                    self.current_scene_manager.current_scene = "game"
+                    self.current_scene_manager.current_scene = "load_game"
 
     def render(self):
         background_image = pyray.load_image(BG_IMAGE)
