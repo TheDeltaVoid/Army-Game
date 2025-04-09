@@ -12,7 +12,12 @@ class MainMenu:
         pass
 
     def render(self):
-        pyray.clear_background(BG_COLOR)
+        background_image = pyray.load_image(BG_IMAGE)
+        pyray.image_resize_nn(background_image, pyray.get_render_width(), pyray.get_render_height())
+        background_texture = pyray.load_texture_from_image(background_image)
+        pyray.unload_image(background_image)
+        pyray.draw_texture(background_texture, 0, 0, pyray.WHITE)
+        pyray.clear_background(pyray.BLANK)
 
         main_font = pyray.load_font_ex(MAIN_FONT, TITLE_FONT_SIZE, None, 0)
         
@@ -31,8 +36,8 @@ class MainMenu:
         pyray.image_resize_nn(button_image, int(button_size.x), int(button_size.y))
         pyray.image_draw_text_ex(button_image, main_font, get_text("PLAY"), button_text_pos, PLAY_BUTTON_TEXT_FONT_SIZE, PLAY_BUTTON_TEXT_SPACING, PLAY_BUTTON_TEXT_COLOR)
 
-        button_pos = pyray.Vector2((pyray.get_render_width() // 2) - (text_size.x // 2) - PLAY_BUTTON_PADDING_X,
-                            (pyray.get_render_height() // 2) - (text_size.y // 2) - PLAY_BUTTON_PADDING_Y)
+        button_pos = pyray.Vector2((pyray.get_render_width() // 2) - (button_text_size.x // 2) - PLAY_BUTTON_PADDING_X,
+                            (pyray.get_render_height() // 2) - (button_text_size.y // 2) - PLAY_BUTTON_PADDING_Y)
         
         button_texture = pyray.load_texture_from_image(button_image)
         pyray.unload_image(button_image)

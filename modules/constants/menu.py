@@ -1,6 +1,6 @@
 import pyray
 
-BG_COLOR = pyray.Color(30, 27, 26, 255)
+BG_IMAGE = "resources/2d_art/Background.png"
 
 TITLE_COLOR = pyray.Color(195, 198, 188, 255)
 TITLE_FONT_SIZE = 70
