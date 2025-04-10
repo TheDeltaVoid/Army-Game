@@ -28,7 +28,7 @@ class LoadScreen:
 
     def update(self, delta_time):
         if self.current_scene_manager.scene_ready :
-            self.current_scene_manager.current_scene = self.scene_id
+            self.current_scene_manager.change_scene(self.scene_id)
 
     def render(self):
         pyray.draw_texture(self.background_texture, 0, 0, pyray.WHITE)
