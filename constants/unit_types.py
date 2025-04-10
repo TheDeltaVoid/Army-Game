@@ -7,3 +7,4 @@ INFANTRY = unit.UnitType(150,
                          70,
                          "resources/units/infantry.jpg")
 
+ARMY_COMPOSITION = [INFANTRY, INFANTRY, INFANTRY]

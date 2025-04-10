@@ -1,5 +1,6 @@
 import pyray
 import math
+import random
 import modules.text as text
 import modules.unit as unit
 
@@ -18,8 +19,25 @@ class GameManager:
 
         self.time = 0
 
-        self.ally_units = [unit.Unit(INFANTRY, 150, 250, ALLY_COLOR)]
+        self.ally_units = []
         self.enemy_units = []
+
+    def find_valid_position(self, unit_type):
+        valid_pos = False
+        x = 0
+        y = 0
+        while not valid_pos :
+            x = random.randrange(0, MAP_SIZE_X - 1)
+            y = random.randrange(0, MAP_SIZE_Y - 1)
+            valid_pos = unit_type.check_position(self.game_map.height(pyray.Vector2(x, y)))
+        return (x, y)
+
+    def initial_place_unit(self):
+        for unit_to_place in ARMY_COMPOSITION:
+            x, y = self.find_valid_position(unit_to_place)
+            self.ally_units.append(unit.Unit(unit_to_place, x, y, ALLY_COLOR))
+            x, y = self.find_valid_position(unit_to_place)
+            self.enemy_units.append(unit.Unit(unit_to_place, x, y, ENEMY_COLOR))
 
     def move_view(self, delta):
         delta = pyray.vector2_scale(delta, -1.0/self.camera.zoom)
