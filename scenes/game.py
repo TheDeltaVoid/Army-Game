@@ -37,4 +37,6 @@ class Game:
 
         self.gm.draw_units(self.current_mouse_position)
 
+        self.gm.draw_fog_of_war()
+
         self.gm.render_info(self.current_mouse_position, self.secondary_font, self.main_font)

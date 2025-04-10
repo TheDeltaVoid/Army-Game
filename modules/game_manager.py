@@ -92,6 +92,19 @@ class GameManager:
     def select_unit(self, pos):
         self.selected_unit = self.selectable_unit(pos)
 
+    def draw_fog_of_war(self):
+        pyray.begin_mode_2d(self.camera)
+        fog_of_war = pyray.gen_image_color(self.game_map.size_x, self.game_map.size_y, BG_COLOR)
+
+        for unit in self.ally_units:
+            pyray.image_draw_circle(fog_of_war, unit.x, unit.y, unit.unit_type.field_of_view, pyray.BLANK)
+
+        fog_of_war_tex = pyray.load_texture_from_image(fog_of_war)
+        pyray.unload_image(fog_of_war)
+
+        pyray.draw_texture(fog_of_war_tex, 0, 0, pyray.WHITE)
+        pyray.end_mode_2d()
+
     def draw_map(self):
         pyray.begin_mode_2d(self.camera)
 
