@@ -30,15 +30,7 @@ class SceneManager:
         self.scene_ready = True
 
     def update(self, delta_time):
-        try :
-            self.scenes_list[self.current_scene].update(delta_time)
-        except AttributeError:
-            self.load_scene("main_menu")
-            self.change_scene("main_menu")
+        self.scenes_list[self.current_scene].update(delta_time)
 
     def render(self):
-        try :
-            self.scenes_list[self.current_scene].render()
-        except AttributeError:
-            self.load_scene("main_menu")
-            self.change_scene("main_menu")
+        self.scenes_list[self.current_scene].render()
