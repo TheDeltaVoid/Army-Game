@@ -10,3 +10,4 @@ LANG_MODULE = "modules.langs."
 TITLE = "Army Game"
 
 MAIN_FONT = "resources/fonts/capture_it/Capture it.ttf"
+SECONDARY_FONT = "resources/fonts/generale_station/GeneraleStation.ttf"

@@ -36,7 +36,7 @@ class GameManager:
 
         return new_position
 
-    def render_info(self, mouse_position, mouse_distance, selected_point):
+    def render_info(self, mouse_position, mouse_distance, selected_point, secondary_font):
         mouse_position_map = self.screen_point_to_map_point(mouse_position)
 
         selected_point = self.map_point_to_screen_point(selected_point)
@@ -46,7 +46,7 @@ class GameManager:
         pyray.draw_circle_v(mouse_position, MOUSE_POS_CIRCLE_SIZE, MOUSE_POS_CIRCLE_COLOR);
         pyray.draw_circle_v(selected_point, SELECTED_POS_CIRCLE_SIZE, SELECTED_POS_CIRCLE_COLOR);
         pyray.draw_line_v(mouse_position, selected_point, LINE_COLOR)
-        pyray.draw_text_ex(pyray.get_font_default(),
+        pyray.draw_text_ex(secondary_font,
                            mouse_position_text,
                            pyray.vector2_add(mouse_position, MOUSE_POS_TEXT_POSITION),
                            MOUSE_POS_TEXT_FONT_SIZE,

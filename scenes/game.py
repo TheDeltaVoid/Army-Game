@@ -3,10 +3,12 @@ import math
 import modules.map_utils as map_utils
 import modules.game_manager as game_manager
 
+from constants.general import *
 from constants.game import *
 
 class Game:
     def __init__(self):
+        self.secondary_font = pyray.load_font_ex(SECONDARY_FONT, MOUSE_POS_TEXT_FONT_SIZE, None, 0)
         self.gm = game_manager.GameManager()
 
         self.selected_point = pyray.Vector2(0, 0)
@@ -39,4 +41,4 @@ class Game:
 
         pyray.end_mode_2d()
 
-        self.gm.render_info(pyray.get_mouse_position(), self.current_mouse_distance, self.selected_point)
+        self.gm.render_info(pyray.get_mouse_position(), self.current_mouse_distance, self.selected_point, self.secondary_font)
