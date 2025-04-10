@@ -3,6 +3,8 @@ import pyray
 OFFSET = 10000
 SCALE = 3
 
+DEFAULT_PRECISION=5
+
 MAX_HEIGHT = 100
 
 def TERRAIN_TYPE(value):

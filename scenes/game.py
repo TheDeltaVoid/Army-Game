@@ -9,8 +9,7 @@ class Game:
     def __init__(self):
         self.gm = game_manager.GameManager()
 
-        self.point_x = 0
-        self.point_y = 0
+        self.point = pyray.Vector2(0, 0)
 
     def start(self):
         pass
@@ -23,11 +22,12 @@ class Game:
         if wheel != 0:
             self.gm.zoom(pyray.get_mouse_position(), wheel)
 
-        if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
-            print(self.gm.game_map.dist(self.point_x, self.point_y, pyray.get_mouse_x(), pyray.get_mouse_y())
+        current_mouse_position = self.gm.screen_point_to_map_point(pyray.get_mouse_position())
 
-            self.point_x = pyray.get_mouse_x()
-            self.point_y = pyray.get_mouse_y()
+        print(self.gm.game_map.dist(self.point, current_mouse_position))
+
+        if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
+            self.point = current_mouse_position
 
     def render(self):
         pyray.clear_background(BG_COLOR)

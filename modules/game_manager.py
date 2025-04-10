@@ -21,3 +21,11 @@ class GameManager:
         self.camera.target = mouse_world_pos
         scale = 0.2*wheel
         self.camera.zoom = pyray.clamp(math.exp(math.log(self.camera.zoom)+scale), MIN_ZOOM, MAX_ZOOM)
+
+    def screen_point_to_map_point(self, pos):
+        new_position = pyray.get_screen_to_world_2d(pyray.Vector2(pos.x - 1, pos.y - 1), self.camera)
+
+        new_position = pyray.vector2_clamp(new_position, pyray.Vector2(0, 0), pyray.Vector2(self.game_map.size_x - 1, self.game_map.size_y - 1))
+
+        return new_position
+

@@ -20,14 +20,20 @@ class Map :
         self.texture_map = pyray.load_texture_from_image(map_image)
         pyray.unload_image(map_image)
 
-    def height(self, x, y):
-        return self.map_table[y * self.size_x + x]
+    def height(self, pos):
+        return self.map_table[int(pos.y) * self.size_x + int(pos.x)]
 
-    def dist(self, x1, y1, x2, y2):
-        h_dist_sq = math.pow(x1 - x2, 2) + math.pow(y1 - y2, 2)
-        v_dist_sq = math.pow(self.height(x1, y1) - self.height(x2, y2), 2)
+    def dist(self, pos1, pos2, precision=DEFAULT_PRECISION):
+        if precision < 2:
+            h_dist_sq = pyray.vector2_distance_sqr(pos1, pos2)
+            v_dist_sq = math.pow(self.height(pos1) - self.height(pos2), 2)
+            return math.sqrt(h_dist_sq + v_dist_sq)
 
-        return math.sqrt(h_dist_sq + v_dist_sq)
+        xm = (pos1.x + pos2.x) // 2
+        ym = (pos1.y + pos2.y) // 2
+        middle = pyray.Vector2(xm, ym)
+
+        return (self.dist(pos1, middle, precision-1) + self.dist(middle, pos2, precision-1))
 
     def draw(self):
         pyray.draw_texture(self.texture_map, 0, 0, pyray.WHITE)
