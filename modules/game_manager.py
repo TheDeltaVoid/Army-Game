@@ -92,6 +92,13 @@ class GameManager:
     def select_unit(self, pos):
         self.selected_unit = self.selectable_unit(pos)
 
+    def draw_map(self):
+        pyray.begin_mode_2d(self.camera)
+
+        self.game_map.draw()
+
+        pyray.end_mode_2d()
+
     def draw_units(self, mouse_position):
         selectable_unit = self.selectable_unit(mouse_position)
 

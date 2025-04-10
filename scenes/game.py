@@ -33,11 +33,7 @@ class Game:
     def render(self):
         pyray.clear_background(BG_COLOR)
 
-        pyray.begin_mode_2d(self.gm.camera)
-
-        self.gm.game_map.draw()
-
-        pyray.end_mode_2d()
+        self.gm.draw_map()
 
         self.gm.draw_units(self.current_mouse_position)
 
