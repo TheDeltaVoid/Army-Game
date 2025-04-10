@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="600"
+   height="375"
+   id="NATO Map Symbol"
+   version="1.1"
+   sodipodi:docname="reconnaissance.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   inkscape:export-filename="../reconnaissance.jpg"
+   inkscape:export-xdpi="8"
+   inkscape:export-ydpi="8"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.78842406"
+     inkscape:cx="223.8643"
+     inkscape:cy="221.96177"
+     inkscape:window-width="1366"
+     inkscape:window-height="699"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="NATO Map Symbol" />
+  <path
+     id="Friendly Frame"
+     d="M 4.6755203,0 H 595.32448 V 370.32448 H 4.6755203 Z"
+     style="fill:#bfbfbf;stroke:#000000;stroke-width:9.74984;stroke-linejoin:miter;stroke-miterlimit:4;fill-opacity:1" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:9.77679;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4"
+     id="Recce"
+     d="M 597.69225,-0.56352909 4.6755203,370.32448" />
+</svg>
