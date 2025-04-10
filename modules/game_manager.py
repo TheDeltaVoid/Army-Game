@@ -46,7 +46,7 @@ class GameManager:
 
         selected_point = self.map_point_to_screen_point(selected_point)
 
-        mouse_position_text = f"({int(mouse_position_map.x)};{int(mouse_position_map.y)}) <-> {int(mouse_distance)}m"
+        mouse_position_text = f"({int(mouse_position_map.x)};{int(mouse_position_map.y)}) <-> {int(mouse_distance) / 10}km"
 
         pyray.draw_circle_v(mouse_position, MOUSE_POS_CIRCLE_SIZE, MOUSE_POS_CIRCLE_COLOR)
         pyray.draw_circle_v(selected_point, SELECTED_POS_CIRCLE_SIZE, SELECTED_POS_CIRCLE_COLOR)
