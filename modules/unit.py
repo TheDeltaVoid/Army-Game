@@ -11,6 +11,16 @@ class UnitType:
         self.max_height = max_height
         self.image = image
 
+    def check_position(self, height):
+        if (height < self.min_height) or (height > self.max_height):
+            return False
+        return True
+
+    def can_move(self, distance, height):
+        if (distance > self.speed) or not self.check_position(height):
+            return False
+        return True
+
 class Unit:
     def __init__(self, unit_type, x, y, side_color):
         self.unit_type = unit_type
@@ -23,13 +33,8 @@ class Unit:
 
         self.side_color = side_color
 
-    def can_move(self, distance, height):
-        if (distance > self.unit_type.speed) or (height < self.unit_type.min_height) or (height > self.unit_type.max_height):
-            return False
-        return True
-
     def move(self, x, y, distance, height):
-        if (self.can_move(distance, height)):
+        if (self.unit_type.can_move(distance, height)):
             self.x = x
             self.y = y
 
