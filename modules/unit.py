@@ -38,5 +38,7 @@ class Unit:
             self.x = x
             self.y = y
 
-    def draw(self, screen_pos):
-        pyray.draw_texture(self.texture, int(screen_pos.x) - (UNIT_SIZE_X // 2), int(screen_pos.y) - (UNIT_SIZE_X // 2), self.side_color)
+    def draw(self, screen_pos, selected = False):
+        pyray.draw_texture(self.texture, int(screen_pos.x) - (UNIT_SIZE_X // 2),
+                           int(screen_pos.y) - (UNIT_SIZE_X // 2),
+                           self.side_color if not selected else SELECTED_COLOR)

@@ -12,26 +12,23 @@ class Game:
         self.main_font = pyray.load_font_ex(MAIN_FONT, TIME_TEXT_FONT_SIZE, None, 0)
         self.gm = game_manager.GameManager(current_player_prefs)
 
-        self.selected_point = pyray.Vector2(0, 0)
-        self.current_mouse_distance = 0
+        self.current_mouse_position = pyray.Vector2(0, 0)
 
     def start(self):
         self.gm.initial_place_unit()
 
     def update(self, delta_time):
+        self.current_mouse_position = pyray.get_mouse_position()
+
         if pyray.is_mouse_button_down(pyray.MOUSE_BUTTON_LEFT):
             self.gm.move_view(pyray.get_mouse_delta())
 
         wheel = pyray.get_mouse_wheel_move()
         if wheel != 0:
-            self.gm.zoom(pyray.get_mouse_position(), wheel)
-
-        current_mouse_position = self.gm.screen_point_to_map_point(pyray.get_mouse_position())
-
-        self.current_mouse_distance = self.gm.game_map.dist(self.selected_point, current_mouse_position)
+            self.gm.zoom(self.current_mouse_position, wheel)
 
         if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
-            self.selected_point = current_mouse_position
+            self.gm.select_unit(self.current_mouse_position)
 
     def render(self):
         pyray.clear_background(BG_COLOR)
@@ -44,4 +41,4 @@ class Game:
 
         self.gm.draw_units()
 
-        self.gm.render_info(pyray.get_mouse_position(), self.current_mouse_distance, self.selected_point, self.secondary_font, self.main_font)
+        self.gm.render_info(self.current_mouse_position, self.secondary_font, self.main_font)

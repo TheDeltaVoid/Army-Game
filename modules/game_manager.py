@@ -21,6 +21,9 @@ class GameManager:
 
         self.ally_units = []
         self.enemy_units = []
+        self.all_units = []
+
+        self.selected_unit = None
 
     def find_valid_position(self, unit_type):
         valid_pos = False
@@ -35,9 +38,13 @@ class GameManager:
     def initial_place_unit(self):
         for unit_to_place in ARMY_COMPOSITION:
             x, y = self.find_valid_position(unit_to_place)
-            self.ally_units.append(unit.Unit(unit_to_place, x, y, ALLY_COLOR))
+            new_unit = unit.Unit(unit_to_place, x, y, ALLY_COLOR)
+            self.ally_units.append(new_unit)
+            self.all_units.append(new_unit)
             x, y = self.find_valid_position(unit_to_place)
-            self.enemy_units.append(unit.Unit(unit_to_place, x, y, ENEMY_COLOR))
+            new_unit = unit.Unit(unit_to_place, x, y, ENEMY_COLOR)
+            self.enemy_units.append(new_unit)
+            self.all_units.append(new_unit)
 
     def move_view(self, delta):
         delta = pyray.vector2_scale(delta, -1.0/self.camera.zoom)
@@ -64,25 +71,59 @@ class GameManager:
 
         return new_position
 
+
+    def select_unit(self, pos):
+        pos = self.screen_point_to_map_point(pos)
+        min_distance = math.inf
+        best_unit = None
+
+        for unit_to_check in self.ally_units:
+            unit_pos = pyray.Vector2(unit_to_check.x, unit_to_check.y)
+            distance = pyray.vector2_distance(unit_pos, pos)
+            if distance < min_distance:
+                best_unit = unit_to_check
+                min_distance = distance
+
+        if min_distance > SELECT_DISTANCE:
+            self.selected_unit = None
+        else :
+            self.selected_unit = best_unit
+
     def draw_units(self):
         for single_unit in self.ally_units:
-            single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)))
+            single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)), single_unit == self.selected_unit)
         for single_unit in self.enemy_units:
             single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)))
 
-    def render_info(self, mouse_position, mouse_distance, selected_point, secondary_font, main_font):
+    def calc_infos(self, mouse_position):
+        selected_point = pyray.Vector2(self.selected_unit.x, self.selected_unit.y)
         mouse_position_map = self.screen_point_to_map_point(mouse_position)
+        mouse_distance = self.game_map.dist(selected_point, mouse_position_map)
 
-        selected_point = self.map_point_to_screen_point(selected_point)
+        return (selected_point, mouse_distance, mouse_position_map)
 
-        mouse_position_text = f"({int(mouse_position_map.x)};{int(mouse_position_map.y)}) <-> {int(mouse_distance) / 10}km"
+    def render_info(self, mouse_position, secondary_font, main_font):
+        selected_point = pyray.Vector2(0, 0)
+        mouse_distance = 0
+        mouse_position_map = pyray.Vector2(0, 0)
 
-        pyray.draw_circle_v(mouse_position, MOUSE_POS_CIRCLE_SIZE, MOUSE_POS_CIRCLE_COLOR)
-        pyray.draw_circle_v(selected_point, SELECTED_POS_CIRCLE_SIZE, SELECTED_POS_CIRCLE_COLOR)
-        pyray.draw_line_v(mouse_position, selected_point, LINE_COLOR)
+        if self.selected_unit != None :
+            selected_point, mouse_distance, mouse_position_map = self.calc_infos(mouse_position)
+
+        mouse_position_text = f"({int(mouse_position_map.x)};{int(mouse_position_map.y)})" + (f" <-> {int(mouse_distance) / 10}km" if self.selected_unit != None else "")
+
+        pyray.draw_circle_v(mouse_position,
+                            MOUSE_POS_CIRCLE_SIZE,
+                            MOUSE_POS_CIRCLE_COLOR)
+        if self.selected_unit != None :
+            pyray.draw_line_v(mouse_position,
+                              self.map_point_to_screen_point(selected_point),
+                              LINE_COLOR)
         pyray.draw_text_ex(secondary_font,
                            mouse_position_text,
-                           pyray.vector2_add(mouse_position, MOUSE_POS_TEXT_POSITION),
+                           pyray.vector2_add(
+                               mouse_position,
+                               MOUSE_POS_TEXT_POSITION),
                            MOUSE_POS_TEXT_FONT_SIZE,
                            MOUSE_POS_TEXT_SPACING,
                            MOUSE_POS_TEXT_COLOR)

@@ -1,10 +1,13 @@
 import pyray
 import modules.map_utils as map_utils
 
-ALLY_COLOR = pyray.BLUE
+ALLY_COLOR = pyray.Color(52, 68, 199, 255)
+SELECTED_COLOR = pyray.Color(228, 228, 255, 255)
 ENEMY_COLOR = pyray.RED
 
 BG_COLOR = pyray.Color(5, 10, 30, 255)
+
+SELECT_DISTANCE = 10
 
 MAP_SIZE_X = 1000
 MAP_SIZE_Y = 500
@@ -17,9 +20,6 @@ MAX_ZOOM = 16.0
 
 MOUSE_POS_CIRCLE_SIZE = 4
 MOUSE_POS_CIRCLE_COLOR = pyray.DARKGRAY
-
-SELECTED_POS_CIRCLE_SIZE = 5
-SELECTED_POS_CIRCLE_COLOR = pyray.PINK
 
 LINE_COLOR = pyray.BLACK
 
