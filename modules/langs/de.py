@@ -1,3 +1,4 @@
 TITLE = "Armee Spiel"
 PLAY = "BESTELLEN!"
-LOAD = "LADEN..."
+LOAD = "LADEN. . ."
+TIME = "TAG "

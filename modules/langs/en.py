@@ -1,3 +1,4 @@
 TITLE = "Army Game"
 PLAY = "COMMAND!"
-LOAD = "LOADING..."
+LOAD = "LOADING. . ."
+TIME = "DAY "

@@ -1,3 +1,4 @@
 TITLE = "Jeu de troupes"
 PLAY = "DIRIGER !"
-LOAD = "CHARGEMENT..."
+LOAD = "CHARGEMENT. . ."
+TIME = "JOUR "

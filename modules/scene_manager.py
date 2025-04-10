@@ -21,7 +21,7 @@ class SceneManager:
     def load_scene(self, scene_id, next_scene_id=""):
         match scene_id:
             case "game":
-                self.scenes_list["game"] = game.Game()
+                self.scenes_list["game"] = game.Game(self.current_player_prefs)
             case "main_menu":
                 self.scenes_list["main_menu"] = menus.MainMenu(self, self.current_player_prefs)
             case "load_screen":

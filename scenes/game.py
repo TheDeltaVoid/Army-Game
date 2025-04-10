@@ -7,9 +7,10 @@ from constants.general import *
 from constants.game import *
 
 class Game:
-    def __init__(self):
+    def __init__(self, current_player_prefs):
         self.secondary_font = pyray.load_font_ex(SECONDARY_FONT, MOUSE_POS_TEXT_FONT_SIZE, None, 0)
-        self.gm = game_manager.GameManager()
+        self.main_font = pyray.load_font_ex(MAIN_FONT, TIME_TEXT_FONT_SIZE, None, 0)
+        self.gm = game_manager.GameManager(current_player_prefs)
 
         self.selected_point = pyray.Vector2(0, 0)
         self.current_mouse_distance = 0
@@ -41,4 +42,4 @@ class Game:
 
         pyray.end_mode_2d()
 
-        self.gm.render_info(pyray.get_mouse_position(), self.current_mouse_distance, self.selected_point, self.secondary_font)
+        self.gm.render_info(pyray.get_mouse_position(), self.current_mouse_distance, self.selected_point, self.secondary_font, self.main_font)
