@@ -15,10 +15,8 @@ class Game:
         self.selected_point = pyray.Vector2(0, 0)
         self.current_mouse_distance = 0
 
-        self.gm.initial_place_unit()
-
     def start(self):
-        pass
+        self.gm.initial_place_unit()
 
     def update(self, delta_time):
         if pyray.is_mouse_button_down(pyray.MOUSE_BUTTON_LEFT):
