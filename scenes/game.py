@@ -42,4 +42,6 @@ class Game:
 
         pyray.end_mode_2d()
 
+        self.gm.draw_units()
+
         self.gm.render_info(pyray.get_mouse_position(), self.current_mouse_distance, self.selected_point, self.secondary_font, self.main_font)

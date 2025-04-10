@@ -1,7 +1,9 @@
 import pyray
 import math
 import modules.text as text
+import modules.unit as unit
 
+from constants.unit_types import *
 from constants.game import *
 
 class GameManager:
@@ -15,6 +17,9 @@ class GameManager:
         self.game_map = map_utils.Map(MAP_SIZE_X, MAP_SIZE_Y)
 
         self.time = 0
+
+        self.ally_units = [unit.Unit(INFANTRY, 150, 250, ALLY_COLOR)]
+        self.enemy_units = []
 
     def move_view(self, delta):
         delta = pyray.vector2_scale(delta, -1.0/self.camera.zoom)
@@ -40,6 +45,12 @@ class GameManager:
         new_position = pyray.vector2_add(new_position, pyray.Vector2(1, 1))
 
         return new_position
+
+    def draw_units(self):
+        for single_unit in self.ally_units:
+            single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)))
+        for single_unit in self.enemy_units:
+            single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)))
 
     def render_info(self, mouse_position, mouse_distance, selected_point, secondary_font, main_font):
         mouse_position_map = self.screen_point_to_map_point(mouse_position)
