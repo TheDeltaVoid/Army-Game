@@ -30,8 +30,8 @@ class GameManager:
         x = 0
         y = 0
         while not valid_pos :
-            x = random.randrange(0, MAP_SIZE_X - 1)
-            y = random.randrange(0, MAP_SIZE_Y - 1)
+            x = random.randrange(0, self.game_map.size_x - 1)
+            y = random.randrange(0, self.game_map.size_y - 1)
             valid_pos = unit_type.check_position(self.game_map.height(pyray.Vector2(x, y)))
         return (x, y)
 
