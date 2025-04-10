@@ -9,8 +9,6 @@ class Game:
     def __init__(self):
         self.gm = game_manager.GameManager()
 
-        self.game_map = map_utils.Map(MAP_SIZE_X, MAP_SIZE_Y)
-
         self.point_x = 0
         self.point_y = 0
 
@@ -26,7 +24,7 @@ class Game:
             self.gm.zoom(pyray.get_mouse_position(), wheel)
 
         if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
-            print(self.game_map.dist(self.point_x, self.point_y, pyray.get_mouse_x(), pyray.get_mouse_y()))
+            print(self.gm.game_map.dist(self.point_x, self.point_y, pyray.get_mouse_x(), pyray.get_mouse_y())
 
             self.point_x = pyray.get_mouse_x()
             self.point_y = pyray.get_mouse_y()
@@ -36,6 +34,6 @@ class Game:
 
         pyray.begin_mode_2d(self.gm.camera)
 
-        self.game_map.draw()
+        self.gm.game_map.draw()
 
         pyray.end_mode_2d()

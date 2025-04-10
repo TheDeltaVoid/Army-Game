@@ -9,6 +9,8 @@ class GameManager:
         self.camera.zoom = 1.0
         self.camera.offset = pyray.Vector2(pyray.get_render_width()//2, pyray.get_render_height()//2)
 
+        self.game_map = map_utils.Map(MAP_SIZE_X, MAP_SIZE_Y)
+
     def move_view(self, delta):
         delta = pyray.vector2_scale(delta, -1.0/self.camera.zoom)
         self.camera.target = pyray.vector2_add(self.camera.target, delta)
