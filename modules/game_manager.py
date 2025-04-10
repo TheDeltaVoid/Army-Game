@@ -72,7 +72,7 @@ class GameManager:
         return new_position
 
 
-    def select_unit(self, pos):
+    def selectable_unit(self, pos):
         pos = self.screen_point_to_map_point(pos)
         min_distance = math.inf
         best_unit = None
@@ -84,14 +84,19 @@ class GameManager:
                 best_unit = unit_to_check
                 min_distance = distance
 
-        if min_distance > SELECT_DISTANCE:
-            self.selected_unit = None
+        if min_distance > (SELECT_DISTANCE / self.camera.zoom):
+            return None
         else :
-            self.selected_unit = best_unit
+            return best_unit
 
-    def draw_units(self):
+    def select_unit(self, pos):
+        self.selected_unit = self.selectable_unit(pos)
+
+    def draw_units(self, mouse_position):
+        selectable_unit = self.selectable_unit(mouse_position)
+
         for single_unit in self.ally_units:
-            single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)), single_unit == self.selected_unit)
+            single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)), single_unit == self.selected_unit, single_unit == selectable_unit)
         for single_unit in self.enemy_units:
             single_unit.draw(self.map_point_to_screen_point(pyray.Vector2(single_unit.x, single_unit.y)))
 

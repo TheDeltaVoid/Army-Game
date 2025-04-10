@@ -3,11 +3,12 @@ import modules.map_utils as map_utils
 
 ALLY_COLOR = pyray.Color(52, 68, 199, 255)
 SELECTED_COLOR = pyray.Color(228, 228, 255, 255)
+SELECTABLE_COLOR = pyray.Color(228, 228, 255, 150)
 ENEMY_COLOR = pyray.RED
 
 BG_COLOR = pyray.Color(5, 10, 30, 255)
 
-SELECT_DISTANCE = 10
+SELECT_DISTANCE = 30
 
 MAP_SIZE_X = 1000
 MAP_SIZE_Y = 500

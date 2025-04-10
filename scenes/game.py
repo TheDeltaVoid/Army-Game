@@ -39,6 +39,6 @@ class Game:
 
         pyray.end_mode_2d()
 
-        self.gm.draw_units()
+        self.gm.draw_units(self.current_mouse_position)
 
         self.gm.render_info(self.current_mouse_position, self.secondary_font, self.main_font)
