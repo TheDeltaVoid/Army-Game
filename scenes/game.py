@@ -19,20 +19,11 @@ class Game:
 
     def update(self, delta_time):
         if pyray.is_mouse_button_down(pyray.MOUSE_BUTTON_LEFT):
-            delta = pyray.get_mouse_delta()
-            delta = pyray.vector2_scale(delta, -1.0/self.gm.camera.zoom)
-            self.gm.camera.target = pyray.vector2_add(self.gm.camera.target, delta)
+            self.gm.move_view(pyray.get_mouse_delta())
 
         wheel = pyray.get_mouse_wheel_move()
         if wheel != 0:
-            mouse_world_pos = pyray.get_screen_to_world_2d(pyray.get_mouse_position(), self.gm.camera);
-
-            self.gm.camera.offset = pyray.get_mouse_position()
-
-            self.gm.camera.target = mouse_world_pos
-
-            scale = 0.2*wheel
-            self.gm.camera.zoom = pyray.clamp(math.exp(math.log(self.gm.camera.zoom)+scale), 0.125, 4.0)
+            self.gm.zoom(pyray.get_mouse_position(), wheel)
 
         if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
             print(self.game_map.dist(self.point_x, self.point_y, pyray.get_mouse_x(), pyray.get_mouse_y()))
