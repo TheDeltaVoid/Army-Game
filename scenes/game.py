@@ -9,7 +9,8 @@ class Game:
     def __init__(self):
         self.gm = game_manager.GameManager()
 
-        self.point = pyray.Vector2(0, 0)
+        self.selected_point = pyray.Vector2(0, 0)
+        self.current_mouse_distance = 0
 
     def start(self):
         pass
@@ -24,10 +25,10 @@ class Game:
 
         current_mouse_position = self.gm.screen_point_to_map_point(pyray.get_mouse_position())
 
-        print(self.gm.game_map.dist(self.point, current_mouse_position))
+        self.current_mouse_distance = self.gm.game_map.dist(self.selected_point, current_mouse_position)
 
         if pyray.is_mouse_button_pressed(pyray.MOUSE_BUTTON_RIGHT):
-            self.point = current_mouse_position
+            self.selected_point = current_mouse_position
 
     def render(self):
         pyray.clear_background(BG_COLOR)
@@ -37,3 +38,5 @@ class Game:
         self.gm.game_map.draw()
 
         pyray.end_mode_2d()
+
+        self.gm.render_info(pyray.get_mouse_position(), self.current_mouse_distance, self.selected_point)
